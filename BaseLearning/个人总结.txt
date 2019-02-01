@@ -1,0 +1,41 @@
+列表操作:
+添加一个元素：list.append(), 
+添加多个元素：list.extend()
+插入：list.insert()
+删除：del list 		list.remove   list.pop
+计算元素在列表中出现的次数：list.count()
+返回参数在列表中的位置：list.index(元素,[start],[end])
+逆置 : list.reverse()
+排序:  list.sort(func,key,bool)排序方法、key、是否逆置   前两个参数是默认的
+
+分片拷贝：
+1、lisr1 = list2			这个只是给列表2另外起了一个名字，改变列表2则列表1跟着改变，共用一个内存
+							空间
+2、list3 = list2[:]			这个是分片拷贝，列表3开辟了新的空间来保存列表2的内容
+
+元组：tuple = (1,2,3,4,5)  元组不可以被修改
+空元组：temo = ()  含一个元素的元组 temp = (1,) 必须有逗号，否则被认为是整型
+在元组位置2后插入元素 temp = temo[2:] + ('加入的值') + temp[2:]
+重复元组： 8*temp（..）
+
+字符串与元组的操作基本相同 
+
+不要在函数内部修改全局变量的值，这样函数内部会建立一个和全局变量完全相同的局部变量
+
+lambda函数： g = lambda 参数：返回的值(可以事表达式)
+
+BIF内建函数：1、filter()  			2、map()
+
+字典的内置方法：
+1、fromkeys(参数1 key， 参数2 ：键值) 建字典
+2、keys()指向key     values()指向键值   items()指向一项 key + value
+3、get()函数，获取键值，索引可以超过字典项数
+4、清空字典  clear()
+5、copy()深拷贝
+6、pop() popitem()
+
+pickle 永久存储
+方法：pickle.dump()保存     pickle.load()读取
+
+魔法方法：
+1、

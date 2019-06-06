@@ -4,6 +4,7 @@
 #@File  : plotD80.py
 
 import matplotlib.pyplot as plt
+
 import numpy as np
 import tkinter as tk
 from tkinter import ttk
@@ -135,24 +136,31 @@ def draw_countour(x,y):
 on_hit = False
 #display函数，用于GUI的display button触发事件
 def display():
+    lineWidth = 0
+    lineColor = countourColor = ''
     global on_hit
     global fig
+
     if on_hit == False:
         on_hit = True
+
+        lineWidth = widthChosen.get()
+        lineColor = lcolorChosen.get()
+        countourColor = outlineColorChosen.get()
 
         countour_data_y1, countour_data_x1,countour_data_y2,countour_data_x2 = draw_countour(data_x, data_y)
         # plt.scatter(countour_data_x1, countour_data_y1, label='data countour', color='g')
         # plt.scatter(countour_data_x2, countour_data_y2, label='data countour', color='g')
         # plt.plot(countour_data_x1, countour_data_y1, label='data countour',color = 'g')
         # plt.plot(countour_data_x2, countour_data_y2, label='data countour', color='g')
-        plt.fill(countour_data_x1, countour_data_y1,'#808080',alpha = 0.2)  #填充区域，alpha为透明度(0-1)
-        plt.fill(countour_data_x2, countour_data_y2, '#808080', alpha=0.2)
+        plt.fill(countour_data_x1, countour_data_y1,color=countourColor,alpha = 0.2)  #填充区域，alpha为透明度(0-1)
+        plt.fill(countour_data_x2, countour_data_y2, color=countourColor, alpha=0.2)
 
 
         # deal data
         new_data_x, new_data_y = data_deal(data_x, data_y)
         # plt.scatter(new_data_x,new_data_y,label = 'deal data')
-        plt.plot(new_data_x, new_data_y, label='deal data',color = 'r')
+        plt.plot(new_data_x, new_data_y, label='deal data',linewidth = lineWidth,color = lineColor)
 
         plt.legend()            #用于显示标签
         fig = plt.gcf()         #用于保存图片，防止图片变为空白
@@ -176,50 +184,50 @@ window = tk.Tk()     #实例化object，建立窗口
 window.title('Plot Window')
 window.geometry('800x600')    #设置窗口大小
 
-l = tk.Label(window,text='hi,Please select the graphic parameters:',font=('Arial', 12))
-l.grid(row = 0,column = 0,rowspan = 2)   #放置标签
+l = tk.Label(window,text='hi,Please select the graphic parameters:',font=('Tahoma', 15))
+l.grid(row = 0,column = 0)   #放置标签
 
 #combobox--linewidth
-l1 = tk.Label(window,text='line width::',font=('Arial', 12),
-              width=30, height=2)
-l1.grid(row = 2,column = 0,rowspan = 2)   #放置标签
+l1 = tk.Label(window,text='line width::',font=('Arial', 15),
+              width=30, height=6)
+l1.grid(row = 1,column = 0)   #放置标签
 
 num = tk.StringVar()       #创建变量，用var来接收鼠标点击具体选项的内容
-numChosen = ttk.Combobox(window,width = 12,textvariable = num)
-numChosen['values'] = (1,2,3,4,5,6)
-numChosen.current(0)        #设置默认值,显示第几个
-numChosen.grid(row = 2,column = 1,rowspan = 2)
+widthChosen = ttk.Combobox(window,width = 12,textvariable = num,font=('Tahoma', 15))
+widthChosen['values'] = (1,2,3,4,5,6)         #value属性与textvariable绑定，后者跟随value更新
+widthChosen.current(0)        #设置默认值,显示第几个
+widthChosen.grid(row = 1,column = 1)
 
 #combobox--linecolor
-l2 = tk.Label(window,text='line color::',font=('Arial', 12),
-              width=30, height=2)
-l2.grid(row = 4,column = 0,rowspan = 2)   #放置标签
+l2 = tk.Label(window,text='line color::',font=('Arial', 15),
+              width=30, height=6)
+l2.grid(row = 2,column = 0)   #放置标签
 
 color = tk.StringVar()       #创建变量，用var来接收鼠标点击具体选项的内容
-colorChosen = ttk.Combobox(window,width = 12,textvariable = color)
-colorChosen['values'] = ('green','red','blue')
-colorChosen.current(0)        #设置默认值,显示第几个
-colorChosen.grid(row = 4,column = 1,rowspan = 2)
+lcolorChosen = ttk.Combobox(window,width = 12,textvariable = color,font=('Tahoma', 15))
+lcolorChosen['values'] = ('gray','green','red','blue','gold')
+lcolorChosen.current(2)        #设置默认值,显示第几个
+lcolorChosen.grid(row = 2,column = 1)
 
 #combobox--countourcolor
-l3 = tk.Label(window,text='countour color::',font=('Arial', 12),
-              width=30, height=2)
-l3.grid(row = 6,column = 0,rowspan = 2)   #放置标签
+l3 = tk.Label(window,text='countour color::',font=('Arial', 15),
+              width=30, height=6)
+l3.grid(row = 3,column = 0)   #放置标签
 
 color1 = tk.StringVar()       #创建变量，用var来接收鼠标点击具体选项的内容
-outlineColorChosen = ttk.Combobox(window,width = 22,height = 100,textvariable = color1)
-outlineColorChosen['values'] = ('green','red','blue')
+outlineColorChosen = ttk.Combobox(window,width = 12,height = 100,textvariable = color1,font=('Tahoma', 15))
+outlineColorChosen['values'] = ('gray','green','red','blue','gold')
 outlineColorChosen.current(0)        #设置默认值,显示第几个
-outlineColorChosen.grid(row = 6,column = 1,rowspan = 2)
+outlineColorChosen.grid(row = 3,column = 1)
 
 button1 = tk.Button(window,text = 'display',font=('Arial', 12), width=10, height=1,command = display)
-button1.grid(row = 8,column = 1,rowspan = 2)
+button1.grid(row = 4,column = 0)
 
 button2 = tk.Button(window,text = 'save as svg',font=('Arial', 12), width=10, height=1,command = save_img)
-button2.grid(row = 8,column = 2,rowspan = 2)
+button2.grid(row = 4,column = 1,sticky = tk.W)
 
 button3 = tk.Button(window,text = 'exit',font=('Arial', 12), width=10, height=1,command = quit)
-button3.grid(row = 10,column = 1,rowspan = 2)
+button3.grid(row = 4,column = 2,columnspan = 2, sticky = tk.E)
 
 window.mainloop()
 

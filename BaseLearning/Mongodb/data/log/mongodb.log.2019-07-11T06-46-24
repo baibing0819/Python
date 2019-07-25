@@ -1,0 +1,13 @@
+2019-07-11T14:16:46.464+0800 I CONTROL  [initandlisten] MongoDB starting : pid=9470 port=27017 dbpath=/home/baibing/prj/pycharmPrj/test/Mongodb/data/db 64-bit host=cadd1
+2019-07-11T14:16:46.464+0800 I CONTROL  [initandlisten] db version v3.6.2
+2019-07-11T14:16:46.464+0800 I CONTROL  [initandlisten] git version: 489d177dbd0f0420a8ca04d39fd78d0a2c539420
+2019-07-11T14:16:46.464+0800 I CONTROL  [initandlisten] OpenSSL version: OpenSSL 1.1.1b  26 Feb 2019
+2019-07-11T14:16:46.464+0800 I CONTROL  [initandlisten] allocator: tcmalloc
+2019-07-11T14:16:46.464+0800 I CONTROL  [initandlisten] modules: none
+2019-07-11T14:16:46.464+0800 I CONTROL  [initandlisten] build environment:
+2019-07-11T14:16:46.464+0800 I CONTROL  [initandlisten]     distarch: x86_64
+2019-07-11T14:16:46.464+0800 I CONTROL  [initandlisten]     target_arch: x86_64
+2019-07-11T14:16:46.464+0800 I CONTROL  [initandlisten] options: { storage: { dbPath: "/home/baibing/prj/pycharmPrj/test/Mongodb/data/db" }, systemLog: { destination: "file", path: "/home/baibing/prj/pycharmPrj/test/Mongodb/data/log/mongodb.log" } }
+2019-07-11T14:16:46.464+0800 E STORAGE  [initandlisten] Failed to set up listener: SocketException: Address already in use
+2019-07-11T14:16:46.464+0800 I CONTROL  [initandlisten] now exiting
+2019-07-11T14:16:46.464+0800 I CONTROL  [initandlisten] shutting down with code:48
